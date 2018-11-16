@@ -87,6 +87,8 @@ public class PeakPerformance {
     }
 
     public void runRoll() {
+        // in the unroll variant - we explicitly unroll the loop by 8x
+        // gcc does it by 4x
         long checkSum = 0, count = 0;
         final long bitmapAddress = ((sun.nio.ch.DirectBuffer) bitmapBuffer).address();
         final long valueAddress = ((sun.nio.ch.DirectBuffer) intValueBuffer).address();
