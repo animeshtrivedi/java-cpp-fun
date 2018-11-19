@@ -45,7 +45,7 @@ public class PeakPerformanceOnHeap {
         intValueBuffer = ByteBuffer.allocate(intSize);
         bitmapBuffer.clear();
         intValueBuffer.clear();
-        System.out.println(items + " items = buffers of int size " + intSize + " bitmap size " + bitmapSize + " allocated ");
+        System.out.println("[java] " + items + " items = buffers of int size " + intSize + " bitmap size " + bitmapSize + " allocated ");
         for(int i = 0;i < bitmapSize; i++){
             bitmapBuffer.put(i, (byte) 0xFF);
         }
@@ -57,7 +57,7 @@ public class PeakPerformanceOnHeap {
         for(int i = 0; i < items; i++){
             intValueBuffer.putInt(i<<2, i);
         }
-        System.out.println("initialization done");
+        System.out.println("[java] " + "initialization done");
     }
 
     private void runNoRoll() {

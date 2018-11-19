@@ -45,7 +45,7 @@ public:
         bitmapBuffer = new uint8_t[bitmapSize];
         intValueBuffer = new uint8_t[intSize];
 
-        std::cout<< items << " items = buffers of int size " << intSize << " bitmap size " << bitmapSize << " allocated \n";
+        std::cout << "[c++] " << items << " items = buffers of int size " << intSize << " bitmap size " << bitmapSize << " allocated \n";
         for(int i = 0; i < bitmapSize; i++){
             bitmapBuffer[i] = 0xFF;
         }
@@ -60,7 +60,7 @@ public:
         _checksum = 0;
         _runtime_in_ns = 0;
 
-        std::cout << "initialization done";
+        std::cout << "[c++] " << "initialization done\n";
     }
 
     inline void run(){

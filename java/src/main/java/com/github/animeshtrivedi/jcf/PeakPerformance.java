@@ -47,7 +47,7 @@ public class PeakPerformance {
         intValueBuffer = ByteBuffer.allocateDirect(intSize);
         bitmapBuffer.clear();
         intValueBuffer.clear();
-        System.out.println(items + " items = buffers of int size " + intSize + " bitmap size " + bitmapSize + " allocated ");
+        System.out.println("[java] " + items + " items = buffers of int size " + intSize + " bitmap size " + bitmapSize + " allocated ");
         for(int i = 0;i < bitmapSize; i++){
             bitmapBuffer.put(i, (byte) 0xFF);
         }
@@ -59,7 +59,7 @@ public class PeakPerformance {
         for(int i = 0; i < items; i++){
             intValueBuffer.putInt(i<<2, i);
         }
-        System.out.println("initialization done");
+        System.out.println("[java] " + "initialization done");
     }
 
     private void runUnRoll() {
@@ -71,7 +71,7 @@ public class PeakPerformance {
         // variables
         long intCount=0, runningCheckSum=0;
         int loopCount = 0;
-        System.out.println("starting the benchmark loop " + localLoopMax + " items " + local_items + "\n");
+        System.out.println("[java] " + "starting the benchmark loop " + localLoopMax + " items " + local_items);
         final long start = System.nanoTime();
         while (loopCount < localLoopMax) {
             for (long i = 0; i < local_items; i++) {

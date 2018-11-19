@@ -19,13 +19,11 @@
 
 int main(int argc, char **argv) {
   PeakPerformanceJava *r = new PeakPerformanceJava();
-  std::cout<<"Running the benchmark \n";
   r->run();
-  std::cout<<"total ints are " << r->_total_Ints << " \n";
   long totalBytes = ((long) r->_total_Ints) << 2;
   double bandwidthGbps = (((double) totalBytes * 8) / r->_runtime_in_ns);
-  std::cout<<"-----------------------------------------------------------------------\n";
-  std::cout<<"Total bytes: " << totalBytes << "( ints = " << r->_total_Ints << " ) time = " << r->_runtime_in_ns << " nsec => bandwidth " << bandwidthGbps << " Gbps\n";
-  std::cout<<"-----------------------------------------------------------------------\n";
+  std::cout << "[c++] " <<"-----------------------------------------------------------------------\n";
+  std::cout << "[c++] " <<"Total bytes: " << totalBytes << "( ints = " << r->_total_Ints << " ) time = " << r->_runtime_in_ns << " nsec => bandwidth " << bandwidthGbps << " Gbps\n";
+  std::cout << "[c++] " <<"-----------------------------------------------------------------------\n";
   return 0;
 }
