@@ -4,24 +4,26 @@ echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
 function make_java {
 home=`pwd`
 cd $home/java/
-mvn package 
-cd - 
+mvn package
+cd -
 }
 
 function make_cpp {
-mkdir -p $home/cpp/release 
-rm -rf $home/cpp/release/* 
-cd $home/cpp/release/ && cmake .. && make 
-cd - 
+mkdir -p $home/cpp/release
+rm -rf $home/cpp/release/*
+cd $home/cpp/release/ && cmake .. && make
+cd -
 }
 
 make_java
-make_cpp 
+make_cpp
 
 echo "________________________________________________________________"
 echo "Running the java program ... "
-java -cp $home/java/target/benchmark-fun-1.0.jar com.github.animeshtrivedi.jcf.Main
+OPX="-XX:+UseG1GC -Xmn2G -Xmx8G"
+echo "java $OPX -cp $home/java/target/benchmark-fun-1.0.jar com.github.animeshtrivedi.jcf.Main"
+java $OPX -cp $home/java/target/benchmark-fun-1.0.jar com.github.animeshtrivedi.jcf.Main
 echo "________________________________________________________________"
 echo "Running the c++ program ... "
-$home/cpp/bin/benchmark-fun 
+$home/cpp/bin/benchmark-fun
 
