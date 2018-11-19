@@ -62,17 +62,19 @@ public class PeakPerformance {
         System.out.println("initialization done");
     }
 
-    private void runNoRoll() {
-        long checkSum = 0, count = 0;
+    private void runUnRoll() {
+        // init consts
         final long bitmapAddress = ((sun.nio.ch.DirectBuffer) bitmapBuffer).address();
         final long valueAddress = ((sun.nio.ch.DirectBuffer) intValueBuffer).address();
-        //final byte[] map = {1, 2, 4, 8, 16, 32, 64, (byte) 128};
-        int loopCount = 0;
+        final int localLoopMax = this.loop;
+        final long local_items = this.items;
+        // variables
         long intCount=0, runningCheckSum=0;
-
+        int loopCount = 0;
+        System.out.println("starting the benchmark loop " + localLoopMax + " items " + local_items + "\n");
         final long start = System.nanoTime();
-        while (loopCount < loop) {
-            for (long i = 0; i < items; i++) {
+        while (loopCount < localLoopMax) {
+            for (long i = 0; i < local_items; i++) {
                 if((Platform.getByte(null, bitmapAddress + (i >> 3L)) & (1L << (i & 7L))) != 0) {
                     intCount++;
                     runningCheckSum += Platform.getInt(null, valueAddress + (i << 2));
@@ -150,6 +152,6 @@ public class PeakPerformance {
     }
 
     public void run(){
-        runNoRoll();
+        runUnRoll();
     }
 }

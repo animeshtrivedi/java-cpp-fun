@@ -4,17 +4,19 @@
 //
 
 void PeakPerformanceJava::runUnroll(){
-    long checkSum = 0, count = 0;
+    // init consts
     const uint8_t* const bitmapAddress = this->bitmapBuffer;
     const uint8_t* const valueAddress = this->intValueBuffer;
-    //final byte[] map = {1, 2, 4, 8, 16, 32, 64, (byte) 128};
-    int loopCount = 0, localLoopMax = this->loop;
-    long localitems = this->items;
+    const int localLoopMax = this->loop;
+    const long local_items = this->items;
+    // variables
     long intCount=0, runningCheckSum=0;
-    std::cout << "starting the benchmark loop " << localLoopMax << " items " << localitems << "\n";
+    int loopCount = 0;
+    std::cout << "starting the benchmark loop " << localLoopMax << " items " << local_items << "\n";
+    // start
     auto start = std::chrono::high_resolution_clock::now();
     while (loopCount < localLoopMax) {
-        for (long i = 0; i < localitems; i++) {
+        for (long i = 0; i < local_items; i++) {
             if((bitmapAddress[(i >> 3L)] & (1L << (i & 7L))) != 0) {
                 intCount++;
                 runningCheckSum += valueAddress[(i << 2)];
@@ -23,6 +25,7 @@ void PeakPerformanceJava::runUnroll(){
         loopCount++;
     }
     auto end = std::chrono::high_resolution_clock::now();
+    //end
     this->_runtime_in_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     this->_checksum+=runningCheckSum;
     this->_total_Ints+=intCount;
