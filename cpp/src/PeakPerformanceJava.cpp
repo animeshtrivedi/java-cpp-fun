@@ -12,7 +12,7 @@ void PeakPerformanceJava::runStock(){
     // variables
     long intCount=0, runningCheckSum=0;
     int loopCount = 0;
-    std::cout << "starting the benchmark loop " << localLoopMax << " items " << local_items << "\n";
+    std::cout  << "[c++] " << "starting the benchmark loop " << localLoopMax << " items " << local_items << "\n";
     // start
     auto start = std::chrono::high_resolution_clock::now();
     while (loopCount < localLoopMax) {

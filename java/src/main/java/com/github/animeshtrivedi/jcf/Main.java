@@ -23,9 +23,9 @@ public class Main {
             p.run();
             long totalBytes = p.intCount * Integer.BYTES;
             String bandwidthGbps = String.format("%.2f", (((double) totalBytes * 8) / p.runtimeInNS));
-            System.out.println("-----------------------------------------------------------------------");
-            System.out.println("Total bytes: " + totalBytes + "( ints = " + p.intCount + " ) time = " + p.runtimeInNS + " nsec => bandwidth " + bandwidthGbps + " Gbps");
-            System.out.println("-----------------------------------------------------------------------");
+            System.out.println("[java] " + "-----------------------------------------------------------------------");
+            System.out.println("[java] " + "Total bytes: " + totalBytes + "( ints = " + p.intCount + " ) time = " + p.runtimeInNS + " nsec => bandwidth " + bandwidthGbps + " Gbps");
+            System.out.println("[java] " + "-----------------------------------------------------------------------");
         } catch (Exception e) {
             e.printStackTrace();
         }
