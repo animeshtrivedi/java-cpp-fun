@@ -62,7 +62,7 @@ public class PeakPerformance {
         System.out.println("[java] " + "initialization done");
     }
 
-    private void runUnRoll() {
+    private void runStock() {
         // init consts
         final long bitmapAddress = ((sun.nio.ch.DirectBuffer) bitmapBuffer).address();
         final long valueAddress = ((sun.nio.ch.DirectBuffer) intValueBuffer).address();
@@ -88,7 +88,7 @@ public class PeakPerformance {
         this.intCount+= intCount;
     }
 
-    public void runRoll() {
+    public void runUnRoll() {
         // in the unroll variant - we explicitly unroll the loop by 8x
         // gcc does it by 4x
         long checkSum = 0, count = 0;
@@ -152,6 +152,6 @@ public class PeakPerformance {
     }
 
     public void run(){
-        runUnRoll();
+        runStock();
     }
 }
