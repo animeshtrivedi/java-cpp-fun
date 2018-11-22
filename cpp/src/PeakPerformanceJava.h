@@ -64,10 +64,11 @@ public:
     }
 
     inline void run(){
-        runUnroll();
+        runStock();
     }
+    void runStock();
+    void runAsm();
     void runUnroll();
-    void runRoll();
 };
 
 
